@@ -62,3 +62,14 @@ Process of transferring data between storage systems, often to:
        "embed": ["orders"]
      }
    }
+## Data Extraction
+- **Method**: JDBC/ODBC connections
+- **Best Practice**: Use connection pooling for efficiency
+
+## Transformation
+- **Key Operation**: Denormalize joins → Nested documents
+- **Example**:
+  ```sql
+  -- SQL JOIN
+  SELECT users.*, orders.item 
+  FROM users JOIN orders ON users.id = orders.user_id
