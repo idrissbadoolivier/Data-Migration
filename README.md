@@ -78,3 +78,16 @@ Process of transferring data between storage systems, often to:
   "name": "John",
   "orders": ["Laptop", "Mouse"]
 }
+## Loading
+
+### Method
+- **Bulk inserts** with error retries
+- Recommended batch size: 5,000-10,000 records
+
+### Retry Policy
+```yaml
+retry_policy:
+  max_attempts: 3
+  initial_delay: 1s
+  backoff_multiplier: 2
+  max_delay: 30s
