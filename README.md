@@ -74,3 +74,139 @@ CREATE TABLE users (
   last_name VARCHAR(50),
   birth_date DATE
 );
+🎯 Target (NoSQL Document - MongoDB):
+json
+Copier
+Modifier
+{
+  "_id": 1,
+  "full_name": "Jane Doe",
+  "birth_date": "1990-01-01"
+}
+🧩 Transformation Logic:
+python
+Copier
+Modifier
+def transform(row):
+    return {
+        "_id": row["id"],
+        "full_name": row["first_name"] + " " + row["last_name"],
+        "birth_date": str(row["birth_date"])
+    }
+⚙️ Performance Considerations
+Performance Factors:
+
+🔄 Data volume
+
+🔗 Network bandwidth
+
+🔍 Indexing strategy on NoSQL
+
+🖥️ Server resources
+
+DLoader Optimizations:
+
+🔄 Multithreading for parallel tasks
+
+📦 Data chunking & batch processing
+
+🔁 Incremental updates
+
+⚡ Connection pooling
+
+🛡️ Consistency and Integrity
+How DLoader maintains data integrity:
+
+Ensures transactional reads
+
+Verifies row counts before and after
+
+Supports retries for failed batches
+
+Strategies to verify migration:
+
+✅ Record count checks
+
+✅ Hash-based checksums
+
+✅ Field-level sampling
+
+✅ Automated test queries
+
+📋 Practical Migration Plan
+Scenario: Migrate orders table from MySQL to MongoDB
+
+Steps:
+✅ Install DLoader and required drivers
+
+🔗 Connect MySQL as the source
+
+🌐 Connect MongoDB as the destination
+
+🧰 Create transformation:
+
+python
+Copier
+Modifier
+def transform(order):
+    return {
+        "_id": order["order_id"],
+        "customer": {
+            "name": order["customer_name"],
+            "id": order["customer_id"]
+        },
+        "items": order["product_list"],
+        "total": float(order["amount"])
+    }
+▶️ Run DLoader with transformation script
+
+✅ Verify with queries & validation tools
+
+📚 Case Studies
+🏪 Retail Company: PostgreSQL ➝ MongoDB
+Goal: Support flexible product catalog
+
+Used: DLoader with batch transformations
+
+Strategy: Started with non-critical data first
+
+✅ Lessons Learned:
+Define mapping early
+
+Test in sandbox environment
+
+Monitor and benchmark performance
+
+Use rollback scripts in case of failure
+
+🧠 Conclusion
+🎯 Advantages of SQL ➝ NoSQL migration:
+✔️ Schema flexibility
+
+✔️ Scalability
+
+✔️ Suitable for modern, dynamic apps
+
+⚠️ Disadvantages:
+❗ Complex transformations
+
+❗ Steeper learning curve
+
+❗ Possible data inconsistencies if unchecked
+
+✅ When to Use DLoader:
+You need to move structured data into a flexible schema
+
+You require custom transformation logic
+
+Your project involves medium to large-scale migration
+
+🚀 DLoader is a powerful bridge between structured and flexible data worlds, especially when migrating SQL-based systems to modern NoSQL architectures.
+
+yaml
+Copier
+Modifier
+
+---
+
+Let me know if you want this exported as a `.md` file or need a visual diagram to go with it.
