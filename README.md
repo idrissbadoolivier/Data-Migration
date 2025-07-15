@@ -73,3 +73,8 @@ Process of transferring data between storage systems, often to:
   -- SQL JOIN
   SELECT users.*, orders.item 
   FROM users JOIN orders ON users.id = orders.user_id
+  {
+  "user_id": 101,
+  "name": "John",
+  "orders": ["Laptop", "Mouse"]
+}
